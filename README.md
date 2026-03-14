@@ -12,4 +12,4 @@
 - Form validation 
 
 ## Live link :
-https://github.com/MaHmOoD1122/Age-calculator.git
+https://mahmood1122.github.io/Age-calculator/
