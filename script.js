@@ -17,10 +17,53 @@ const yearError = document.querySelector(".year-error");
 
 const calcBtn = document.querySelector(".calculate-btn");
 
-calcBtn.addEventListener("click", function () {
+const ageForm = document.querySelector(".ageForm");
+yearInput.max = new Date().getFullYear();
+
+let hasError = false;
+const showError = function (inputEl, errorInput) {
+  inputEl.classList.add("error");
+  errorInput.classList.remove("hidden");
+};
+const checkDay = function (day, dayCurrentMonth) {
+  if (!day || day <= -1) {
+    showError(dayInput, dayEmpty);
+    hasError = true;
+  } else if (day > dayCurrentMonth) {
+    showError(dayInput, dayError);
+    hasError = true;
+  }
+};
+const checkMonth = function (month) {
+  if (!month || month <= -1) {
+    showError(monthInput, monthEmpty);
+    hasError = true;
+  } else if (month > 12) {
+    showError(monthInput, monthError);
+    hasError = true;
+  }
+};
+const checkYear = function (year, currentYear) {
+  if (!year || year <= -1) {
+    showError(yearInput, yearEmpty);
+    hasError = true;
+  } else if (year > currentYear) {
+    showError(yearInput, yearError);
+    hasError = true;
+  }
+};
+const checkDate = function (inputDate, currentDate) {
+  if (inputDate > currentDate) {
+    showError(yearInput, yearError);
+    hasError = true;
+  }
+};
+ageForm?.addEventListener("submit", function (e) {
+  e.preventDefault();
   const day = Number(dayInput.value);
   const month = Number(monthInput.value);
   const year = Number(yearInput.value);
+  const inputDate = new Date(year, month - 1, day);
 
   const currentDate = new Date();
   const currentDay = currentDate.getDate();
@@ -29,7 +72,7 @@ calcBtn.addEventListener("click", function () {
 
   const dayCurrentMonth = new Date(year, month, 0).getDate();
 
-  let hasError = false;
+  hasError = false;
   // Remove all errors
   document
     .querySelectorAll(".input-error")
@@ -38,39 +81,15 @@ calcBtn.addEventListener("click", function () {
     .querySelectorAll(".input")
     .forEach((el) => el.classList.remove("error"));
 
-  // Empty day input
-  if (!day) {
-    dayInput.classList.add("error");
-    dayEmpty.classList.remove("hidden");
-    hasError = true;
-  } else if (day > dayCurrentMonth) {
-    dayInput.classList.add("error");
-    dayError.classList.remove("hidden");
-    hasError = true;
-  }
-
-  // Empty month input
-  if (!month) {
-    monthInput.classList.add("error");
-    monthEmpty.classList.remove("hidden");
-    hasError = true;
-  } else if (month > 12) {
-    monthInput.classList.add("error");
-    monthError.classList.remove("hidden");
-    hasError = true;
-  }
-
-  // Empty year input
-  if (!year) {
-    yearInput.classList.add("error");
-    yearEmpty.classList.remove("hidden");
-    hasError = true;
-  } else if (year > currentYear) {
-    yearError.classList.remove("hidden");
-    yearInput.classList.add("error");
-    hasError = true;
-  }
-
+  // Check the full date
+  checkDate(inputDate, currentDate);
+  // Empty day input or lower than -1
+  checkDay(day, dayCurrentMonth);
+  // Empty month input or lower than -1
+  checkMonth(month);
+  // Empty year input or lower than -1
+  checkYear(year, currentYear);
+  //////////////////////////////
   if (hasError) {
     dayNo.textContent = "- - ";
     monthNo.textContent = "- - ";

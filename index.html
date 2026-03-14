@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="main">
+    <form action="#" class="ageForm">
       <div class="inputs-container">
         <div class="input-group">
           <label for="day">Day</label>
@@ -24,7 +24,6 @@
             >This field is required</span
           >
           <span class="input-error day-error hidden">Must be a valid day</span>
-          <p></p>
         </div>
         <div class="input-group">
           <label for="month">Month</label>
@@ -50,8 +49,7 @@
             type="number"
             id="year"
             placeholder="YYYY"
-            min="1940"
-            max="2100"
+            min="1900"
             class="input year-input"
             required
           />
@@ -76,7 +74,8 @@
         <p class="month"><span class="month-no">- - </span>months</p>
         <p class="day"><span class="day-no">- - </span>days</p>
       </div>
-    </main>
+    </form>
+
     <script defer src="script.js"></script>
   </body>
 </html>
