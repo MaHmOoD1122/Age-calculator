@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --Purple-500: hsl(259, 100%, 65%);
+  --Red-400: hsl(0, 100%, 67%);
+  --White: hsl(0, 100%, 100%);
+  --Grey-100: hsl(0, 0%, 94%);
+  --Grey-200: hsl(0, 0%, 86%);
+  --Grey-500: hsl(0, 1%, 44%);
+  --Black: hsl(0, 0%, 0%);
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--Grey-100);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+.main {
+  width: 70rem;
+  padding: 5rem;
+  border-radius: 2rem 2rem 15rem 2rem;
+  background-color: var(--White);
+  position: relative;
+}
+.inputs-container {
+  display: flex;
+  gap: 2rem;
+  width: 77%;
+  margin-block: 0 4rem;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  width: 100%;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--Grey-500);
+}
+.input {
+  padding: 2rem 1.5rem 1.5rem;
+  border: 2px solid var(--Grey-200);
+  border-radius: 1rem;
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+.input:focus {
+  outline: blue 1px solid;
+}
+.input::placeholder {
+  font-weight: 700;
+  font-size: 2.3rem;
+}
+.age-container {
+  font-size: 7rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 9.5rem;
+}
+span {
+  color: var(--Purple-500);
+  transition: all 0.4s;
+}
+.separator {
+  width: 100%;
+  background-color: var(--Grey-200);
+  height: 2px;
+  display: block;
+  margin-block: 0rem 1rem;
+}
+.calculate-btn {
+  background: var(--Purple-500);
+  border: none;
+  padding: 2rem;
+  border-radius: 6rem;
+  position: absolute;
+  left: 92%;
+  bottom: 10%;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.calculate-btn:hover {
+  background-color: var(--Black);
+}
+.calculate-btn:active {
+  transform: translateY(3px);
+}
+.arrow-icon {
+  width: 4rem;
+}
+.error {
+  border: 2px solid var(--Red-400);
+}
+.input-error {
+  color: var(--Red-400);
+  font-weight: 500;
+  font-size: 1.25rem;
+  font-style: italic;
+  transition: all 0.3s;
+}
+.hidden {
+  opacity: 0;
+  /* width: 0; */
+  height: 0;
+  /* backface-visibility: hidden; */
+}
+.separator-container {
+  position: relative;
+  height: 5rem;
+  width: 95%;
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 58%;
+  }
+  .main {
+    padding: 4rem;
+  }
+  .arrow-icon {
+    width: 3rem;
+  }
+  .input {
+    font-size: 2.2rem;
+    font-weight: 900;
+    padding: 1.4rem 0rem 1.2rem 1.5rem;
+  }
+
+  .input-group {
+    font-size: 2rem;
+  }
+  .inputs-container {
+    width: 100%;
+    gap: 1.5rem;
+  }
+  .separator-container {
+    width: 100%;
+  }
+  .calculate-btn {
+    background: var(--Purple-500);
+    border: none;
+    padding: 1.7rem;
+    border-radius: 8rem;
+    position: absolute;
+    bottom: 30%;
+    left: 45%;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+  .age-container {
+    font-size: 5rem;
+    margin-block: 1rem 0;
+  }
+}
+@media (max-width: 370px) {
+  .main {
+    padding: 4rem 3.5rem;
+  }
+}
